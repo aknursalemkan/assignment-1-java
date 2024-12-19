@@ -13,22 +13,22 @@ class Song {
     }
 
     public String getName_song() {
-        System.out.println("Getting Song name_song: " + name_song);
+        System.out.println("Getting Song: " + name_song);
         return name_song;
     }
 
     public void setName_song(String name_song) {
-        System.out.println("Setting Song name_song to: " + name_song);
+        System.out.println("Setting Song: " + name_song);
         this.name_song = name_song;
     }
 
     public Artist getArtist() {
-        System.out.println("Getting Song Artist: " + artist.getName_artist());
+        System.out.println("Getting Artist: " + artist.getName_artist());
         return artist;
     }
 
     public void setArtist(Artist artist) {
-        System.out.println("Setting Song Artist to: " + artist.getName_artist());
+        System.out.println("Setting Artist: " + artist.getName_artist());
         this.artist = artist;
     }
 
@@ -46,12 +46,12 @@ class Artist {
     }
 
     public String getName_artist() {
-        System.out.println("Getting Artist name: " + name_artist);
+        System.out.println("Getting Artist: " + name_artist);
         return name_artist;
     }
 
     public void setName_artist(String name_artist) {
-        System.out.println("Setting Artist name to: " + name_artist);
+        System.out.println("Setting Artist: " + name_artist);
         this.name_artist = name_artist;
     }
 }
@@ -69,12 +69,12 @@ class Playlist {
     }
 
     public String getName() {
-        System.out.println("Getting Playlist name: " + name);
+        System.out.println("Getting Playlist: " + name);
         return name;
     }
 
     public void setName(String name) {
-        System.out.println("Setting Playlist name to: " + name);
+        System.out.println("Setting Playlist: " + name);
         this.name = name;
     }
 
@@ -99,22 +99,23 @@ public class Music_library {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Enter the name of your playlist: ");
+        System.out.println("Hello! Welcome to my Music Library program! ");
+        System.out.println("First, you should create a playlist. Please enter the name of your playlist that you want to add: ");
         String playlistName = scanner.nextLine();
         Playlist playlist = new Playlist(playlistName, 10);
 
         while (true) {
-            System.out.println("Options:");
-            System.out.println("1. Add a song");
-            System.out.println("2. View playlist");
-            System.out.println("3. Exit");
+            System.out.println("Now you have 3 Options:");
+            System.out.println("1. Add a song to your playlist");
+            System.out.println("2. View playlist that you created");
+            System.out.println("3. Exit the program");
 
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine();
 
             switch (choice) {
                 case "1":
-                    System.out.print("Enter the song title: ");
+                    System.out.print("Enter the song name: ");
                     String songTitle = scanner.nextLine();
 
                     System.out.print("Enter the artist name: ");
@@ -132,12 +133,12 @@ public class Music_library {
                     break;
 
                 case "3":
-                    System.out.println("Exiting the Music Streaming Library. Goodbye!");
+                    System.out.println("Exiting the Music Streaming Library. Thank you for using! Goodbye!");
                     scanner.close();
                     return;
 
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("There's no such option. Try again.");
             }
         }
     }
