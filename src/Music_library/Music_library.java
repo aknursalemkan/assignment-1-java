@@ -31,6 +31,11 @@ class Song {
     public String getDetails() {
         return "Song: " + name_song + ", Artist: " + artist.getName_artist();
     }
+
+    public boolean equals(Song otherSong) {
+        return this.name_song.equalsIgnoreCase(otherSong.getName_song()) &&
+                this.artist.getName_artist().equalsIgnoreCase(otherSong.getArtist().getName_artist());
+    }
 }
 
 class Artist {
@@ -47,6 +52,10 @@ class Artist {
 
     public void setName_artist(String name_artist) {
         this.name_artist = name_artist;
+    }
+
+    public boolean equals(Artist otherArtist) {
+        return this.name_artist.equalsIgnoreCase(otherArtist.getName_artist());
     }
 }
 
@@ -85,6 +94,15 @@ class Playlist {
             System.out.println((i + 1) + ". " + songs[i].getDetails());
         }
     }
+
+    public boolean containsSong(Song song) {
+        for (int i = 0; i < numberOfSongs; i++) {
+            if (songs[i].equals(song)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 public class Music_library {
@@ -97,10 +115,11 @@ public class Music_library {
         Playlist playlist = new Playlist(playlistName, 10);
 
         while (true) {
-            System.out.println("Now you have 3 Options:");
+            System.out.println("\nNow you have 4 Options:");
             System.out.println("1. Add a song to your playlist");
             System.out.println("2. View playlist that you created");
-            System.out.println("3. Exit the program");
+            System.out.println("3. Check if a song exists in the playlist");
+            System.out.println("4. Exit the program");
 
             System.out.print("Choose an option: ");
             String choice = scanner.nextLine();
@@ -125,6 +144,23 @@ public class Music_library {
                     break;
 
                 case "3":
+                    System.out.print("Enter the song name to check: ");
+                    String checkSongName = scanner.nextLine();
+
+                    System.out.print("Enter the artist name to check: ");
+                    String checkArtistName = scanner.nextLine();
+
+                    Artist checkArtist = new Artist(checkArtistName);
+                    Song checkSong = new Song(checkSongName, checkArtist);
+
+                    if (playlist.containsSong(checkSong)) {
+                        System.out.println("The song exists in the playlist.");
+                    } else {
+                        System.out.println("The song does not exist in the playlist.");
+                    }
+                    break;
+
+                case "4":
                     System.out.println("Exiting the Music Streaming Library. Thank you for using! Goodbye!");
                     scanner.close();
                     return;
