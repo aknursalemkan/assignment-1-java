@@ -13,22 +13,18 @@ class Song {
     }
 
     public String getName_song() {
-        System.out.println("Getting Song: " + name_song);
         return name_song;
     }
 
     public void setName_song(String name_song) {
-        System.out.println("Setting Song: " + name_song);
         this.name_song = name_song;
     }
 
     public Artist getArtist() {
-        System.out.println("Getting Artist: " + artist.getName_artist());
         return artist;
     }
 
     public void setArtist(Artist artist) {
-        System.out.println("Setting Artist: " + artist.getName_artist());
         this.artist = artist;
     }
 
@@ -46,12 +42,10 @@ class Artist {
     }
 
     public String getName_artist() {
-        System.out.println("Getting Artist: " + name_artist);
         return name_artist;
     }
 
     public void setName_artist(String name_artist) {
-        System.out.println("Setting Artist: " + name_artist);
         this.name_artist = name_artist;
     }
 }
@@ -69,12 +63,10 @@ class Playlist {
     }
 
     public String getName() {
-        System.out.println("Getting Playlist: " + name);
         return name;
     }
 
     public void setName(String name) {
-        System.out.println("Setting Playlist: " + name);
         this.name = name;
     }
 
