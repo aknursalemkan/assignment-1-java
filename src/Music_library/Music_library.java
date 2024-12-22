@@ -1,7 +1,8 @@
-package Music_library;
+package Music_library;   // For organizing related classes
 import java.util.ArrayList;
 import java.util.Scanner;
 
+// Class to represent a song
 class Song {
     private String name_song;
     private Artist artist;
@@ -38,6 +39,7 @@ class Song {
     }
 }
 
+// Class to represent an artist
 class Artist {
     private String name_artist;
 
@@ -59,16 +61,15 @@ class Artist {
     }
 }
 
+// Class to represent a playlist
 class Playlist {
     private String name;
-    private Song[] songs;
-    private int numberOfSongs;
+    private ArrayList<Song> songs; // Using ArrayList
 
-    public Playlist(String name, int maxSongs) {
+    public Playlist(String name) {
         System.out.println("Creating Playlist: " + name);
         this.name = name;
-        this.songs = new Song[maxSongs];
-        this.numberOfSongs= 0;
+        this.songs = new ArrayList<>(); // Initialize the ArrayList
     }
 
     public String getName() {
@@ -80,39 +81,31 @@ class Playlist {
     }
 
     public void addSong(Song song) {
-        if (numberOfSongs < songs.length) {
-            System.out.println("Adding Song to Playlist: " + song.getDetails());
-            songs[numberOfSongs++] = song;
-        } else {
-            System.out.println("Playlist is full. Cannot add more songs.");
-        }
+        System.out.println("Adding Song to Playlist: " + song.getDetails());
+        songs.add(song); // Add song to ArrayList
     }
 
     public void displaySongs() {
         System.out.println("Displaying Songs in Playlist: " + name);
-        for (int i = 0; i < numberOfSongs; i++) {
-            System.out.println((i + 1) + ". " + songs[i].getDetails());
+        for (int i = 0; i < songs.size(); i++) {
+            System.out.println((i + 1) + ". " + songs.get(i).getDetails());
         }
     }
 
     public boolean containsSong(Song song) {
-        for (int i = 0; i < numberOfSongs; i++) {
-            if (songs[i].equals(song)) {
-                return true;
-            }
-        }
-        return false;
+        return songs.contains(song); // Check if the song exists in ArrayList
     }
 }
 
+// Main class for user interaction
 public class Music_library {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Hello! Welcome to my Music Library program! ");
+        System.out.println("Hello! Welcome to my Music Library program!");
         System.out.println("First, you should create a playlist. Please enter the name of your playlist that you want to add: ");
         String playlistName = scanner.nextLine();
-        Playlist playlist = new Playlist(playlistName, 10);
+        Playlist playlist = new Playlist(playlistName);
 
         while (true) {
             System.out.println("\nNow you have 4 Options:");
